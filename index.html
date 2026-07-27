@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f3eee5" />
+  <title>Ratford Bridge Farmhouse</title>
+
+  <style>
+    :root {
+      /* EASY COLOUR EDITS */
+      --cream: #f4efe7;
+      --cream-soft: #fbf8f2;
+      --sage: #71806b;
+      --sage-dark: #465342;
+      --brown: #6d5949;
+      --ink: #31382f;
+      --line: rgba(70, 83, 66, 0.16);
+      --shadow: 0 16px 44px rgba(54, 62, 50, 0.13);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: transparent;
+    }
+
+    body {
+      padding: 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+    }
+
+    .stay-card {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      min-height: 430px;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--cream);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    /* Replace property.jpg with your chosen farmhouse image */
+    .property-image {
+      position: absolute;
+      inset: 0 0 0 auto;
+      z-index: -3;
+      width: 59%;
+      height: 100%;
+      background:
+        linear-gradient(rgba(54, 62, 50, 0.03), rgba(54, 62, 50, 0.08)),
+        url("property.jpg") center / cover no-repeat;
+    }
+
+    /* Soft fade from the information area into the photograph */
+    .image-fade {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(
+          90deg,
+          var(--cream) 0%,
+          var(--cream) 35%,
+          rgba(244, 239, 231, 0.96) 45%,
+          rgba(244, 239, 231, 0.70) 57%,
+          rgba(244, 239, 231, 0.12) 76%,
+          transparent 100%
+        );
+    }
+
+    .content {
+      display: flex;
+      min-height: 430px;
+      padding: 48px;
+    }
+
+    .details {
+      display: flex;
+      width: min(670px, 68%);
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: var(--sage);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 25px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1 {
+      max-width: 540px;
+      margin: 0;
+      color: var(--sage-dark);
+      font-size: clamp(2.15rem, 5vw, 4.35rem);
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+
+    .times {
+      display: flex;
+      gap: 26px;
+      margin-top: 24px;
+      color: var(--brown);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .time-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .time-icon {
+      display: grid;
+      width: 29px;
+      height: 29px;
+      place-items: center;
+      border: 1px solid rgba(113, 128, 107, 0.25);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.36);
+      font-size: 0.83rem;
+    }
+
+    .weather-wrap {
+      margin-top: 38px;
+    }
+
+    .weather-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      color: var(--sage-dark);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .weather-heading h2 {
+      margin: 0;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .weather-status {
+      color: var(--sage);
+      font-size: 0.68rem;
+    }
+
+    .forecast {
+      display: grid;
+      overflow: hidden;
+      grid-template-columns: repeat(5, minmax(76px, 1fr));
+      border: 1px solid rgba(113, 128, 107, 0.2);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(12px);
+    }
+
+    .day {
+      min-width: 0;
+      padding: 14px 8px 13px;
+      border-right: 1px solid rgba(113, 128, 107, 0.14);
+      text-align: center;
+    }
+
+    .day:last-child {
+      border-right: 0;
+    }
+
+    .day-name {
+      color: var(--sage-dark);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.69rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .weather-icon {
+      display: grid;
+      min-height: 36px;
+      margin: 5px 0 3px;
+      place-items: center;
+      font-size: 1.55rem;
+      line-height: 1;
+    }
+
+    .temperatures {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 5px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+    }
+
+    .high {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .low {
+      color: #7d827a;
+    }
+
+    .condition {
+      overflow: hidden;
+      margin-top: 4px;
+      color: #6c7568;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.58rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .attribution {
+      margin-top: 7px;
+      color: rgba(70, 83, 66, 0.62);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.56rem;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 5px;
+      }
+
+      .stay-card {
+        min-height: 555px;
+        border-radius: 22px;
+      }
+
+      .property-image {
+        inset: 0 0 auto;
+        width: 100%;
+        height: 47%;
+        background-position: center;
+      }
+
+      .image-fade {
+        background:
+          linear-gradient(
+            0deg,
+            var(--cream) 0%,
+            var(--cream) 51%,
+            rgba(244, 239, 231, 0.94) 60%,
+            rgba(244, 239, 231, 0.3) 78%,
+            transparent 100%
+          );
+      }
+
+      .content {
+        min-height: 555px;
+        padding: 31px 20px 19px;
+      }
+
+      .details {
+        width: 100%;
+      }
+
+      .title-group {
+        padding-top: 186px;
+      }
+
+      .eyebrow {
+        margin-bottom: 7px;
+        font-size: 0.61rem;
+      }
+
+      h1 {
+        max-width: 330px;
+        font-size: clamp(2rem, 10vw, 3rem);
+      }
+
+      .times {
+        gap: 17px;
+        margin-top: 17px;
+        font-size: 0.77rem;
+      }
+
+      .time-icon {
+        width: 25px;
+        height: 25px;
+      }
+
+      .weather-wrap {
+        margin-top: 23px;
+      }
+
+      .day {
+        padding: 11px 3px 10px;
+      }
+
+      .day-name {
+        font-size: 0.57rem;
+      }
+
+      .weather-icon {
+        min-height: 30px;
+        font-size: 1.3rem;
+      }
+
+      .temperatures {
+        gap: 3px;
+        font-size: 0.67rem;
+      }
+
+      .condition {
+        display: none;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .times {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .title-group {
+        padding-top: 172px;
+      }
+
+      .forecast {
+        border-radius: 14px;
+      }
+
+      .weather-status {
+        max-width: 145px;
+        text-align: right;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="stay-card">
+    <div class="property-image" aria-hidden="true"></div>
+    <div class="image-fade" aria-hidden="true"></div>
+
+    <div class="content">
+      <section class="details">
+        <div class="title-group">
+          <div class="eyebrow">Wiltshire · 17–21 August 2026</div>
+          <h1>Ratford Bridge Farmhouse</h1>
+
+          <div class="times" aria-label="Arrival and departure times">
+            <div class="time-item">
+              <span class="time-icon" aria-hidden="true">↘</span>
+              <span><strong>Check-in:</strong> 3pm</span>
+            </div>
+
+            <div class="time-item">
+              <span class="time-icon" aria-hidden="true">↗</span>
+              <span><strong>Checkout:</strong> 10am</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="weather-wrap">
+          <div class="weather-heading">
+            <h2>Five-day forecast</h2>
+            <span class="weather-status" id="weather-status">Checking forecast…</span>
+          </div>
+
+          <div class="forecast" id="forecast" aria-live="polite"></div>
+          <div class="attribution">Weather data: Open-Meteo</div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    /*
+      Ratford Bridge Farmhouse weather widget
+      Approximate coordinates for the Calne / Ratford area.
+      You can fine-tune these if desired.
+    */
+    const LOCATION = {
+      latitude: 51.444,
+      longitude: -2.014,
+      timezone: "Europe/London"
+    };
+
+    const STAY_DATES = [
+      "2026-08-17",
+      "2026-08-18",
+      "2026-08-19",
+      "2026-08-20",
+      "2026-08-21"
+    ];
+
+    const fallbackDays = [
+      { name: "Mon", date: "17 Aug" },
+      { name: "Tue", date: "18 Aug" },
+      { name: "Wed", date: "19 Aug" },
+      { name: "Thu", date: "20 Aug" },
+      { name: "Fri", date: "21 Aug" }
+    ];
+
+    const weatherCodes = {
+      0:  { icon: "☀️", label: "Clear" },
+      1:  { icon: "🌤️", label: "Mostly clear" },
+      2:  { icon: "⛅", label: "Partly cloudy" },
+      3:  { icon: "☁️", label: "Cloudy" },
+      45: { icon: "🌫️", label: "Fog" },
+      48: { icon: "🌫️", label: "Fog" },
+      51: { icon: "🌦️", label: "Light drizzle" },
+      53: { icon: "🌦️", label: "Drizzle" },
+      55: { icon: "🌧️", label: "Heavy drizzle" },
+      56: { icon: "🌧️", label: "Freezing drizzle" },
+      57: { icon: "🌧️", label: "Freezing drizzle" },
+      61: { icon: "🌦️", label: "Light rain" },
+      63: { icon: "🌧️", label: "Rain" },
+      65: { icon: "🌧️", label: "Heavy rain" },
+      66: { icon: "🌧️", label: "Freezing rain" },
+      67: { icon: "🌧️", label: "Freezing rain" },
+      71: { icon: "🌨️", label: "Light snow" },
+      73: { icon: "🌨️", label: "Snow" },
+      75: { icon: "❄️", label: "Heavy snow" },
+      77: { icon: "🌨️", label: "Snow grains" },
+      80: { icon: "🌦️", label: "Rain showers" },
+      81: { icon: "🌧️", label: "Rain showers" },
+      82: { icon: "⛈️", label: "Heavy showers" },
+      85: { icon: "🌨️", label: "Snow showers" },
+      86: { icon: "🌨️", label: "Heavy snow showers" },
+      95: { icon: "⛈️", label: "Thunderstorms" },
+      96: { icon: "⛈️", label: "Storms and hail" },
+      99: { icon: "⛈️", label: "Storms and hail" }
+    };
+
+    const forecastEl = document.getElementById("forecast");
+    const statusEl = document.getElementById("weather-status");
+
+    function renderWaitingState(message = "Forecast available nearer the stay") {
+      statusEl.textContent = message;
+
+      forecastEl.innerHTML = fallbackDays.map(day => `
+        <article class="day">
+          <div class="day-name">${day.name}</div>
+          <div class="weather-icon" aria-hidden="true">·</div>
+          <div class="temperatures">
+            <span class="high">--°</span>
+            <span class="low">--°</span>
+          </div>
+          <div class="condition">${day.date}</div>
+        </article>
+      `).join("");
+    }
+
+    function renderForecast(daily) {
+      const dateFormatter = new Intl.DateTimeFormat("en-GB", {
+        weekday: "short",
+        timeZone: LOCATION.timezone
+      });
+
+      forecastEl.innerHTML = daily.time.map((date, index) => {
+        const weather = weatherCodes[daily.weather_code[index]] || {
+          icon: "🌿",
+          label: "Forecast"
+        };
+
+        const dayName = dateFormatter.format(
+          new Date(`${date}T12:00:00`)
+        );
+
+        return `
+          <article class="day" title="${weather.label}">
+            <div class="day-name">${dayName}</div>
+            <div class="weather-icon" aria-label="${weather.label}">
+              ${weather.icon}
+            </div>
+            <div class="temperatures">
+              <span class="high">${Math.round(daily.temperature_2m_max[index])}°</span>
+              <span class="low">${Math.round(daily.temperature_2m_min[index])}°</span>
+            </div>
+            <div class="condition">${weather.label}</div>
+          </article>
+        `;
+      }).join("");
+
+      statusEl.textContent = "Ratford · latest outlook";
+    }
+
+    async function loadWeather() {
+      renderWaitingState("Checking forecast…");
+
+      const today = new Date();
+      const stayStart = new Date("2026-08-17T00:00:00+01:00");
+      const daysUntilStay = Math.ceil((stayStart - today) / 86400000);
+
+      /*
+        Open-Meteo's normal daily forecast only reaches a limited number
+        of days ahead. Avoid showing an error before the stay enters range.
+      */
+      if (daysUntilStay > 16) {
+        renderWaitingState(`Updates in about ${daysUntilStay - 16} days`);
+        return;
+      }
+
+      const params = new URLSearchParams({
+        latitude: LOCATION.latitude,
+        longitude: LOCATION.longitude,
+        daily: "weather_code,temperature_2m_max,temperature_2m_min",
+        timezone: LOCATION.timezone,
+        start_date: STAY_DATES[0],
+        end_date: STAY_DATES[STAY_DATES.length - 1]
+      });
+
+      try {
+        const response = await fetch(
+          `https://api.open-meteo.com/v1/forecast?${params.toString()}`
+        );
+
+        if (!response.ok) {
+          throw new Error(`Weather request failed: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (!data.daily || data.daily.time.length !== 5) {
+          throw new Error("The five-day stay forecast is not available yet.");
+        }
+
+        renderForecast(data.daily);
+      } catch (error) {
+        console.warn(error);
+        renderWaitingState("Forecast available nearer the stay");
+      }
+    }
+
+    loadWeather();
+  </script>
+</body>
+</html>
