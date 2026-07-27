@@ -17,10 +17,10 @@
   --border: rgba(63, 74, 59, 0.14);
 
   --glass:
-    rgba(250, 247, 241, 0.78);
+    rgba(250, 247, 241, 0.82);
 
   --shadow:
-    0 14px 40px rgba(45, 54, 42, 0.14);
+    0 12px 34px rgba(45, 54, 42, 0.13);
 }
 
 * {
@@ -35,7 +35,7 @@ body {
 }
 
 body {
-  padding: 5px;
+  padding: 4px;
 
   color: var(--text);
 
@@ -48,182 +48,61 @@ body {
 /* Main widget */
 
 .property-widget {
-  position: relative;
-
   width: min(100%, 1120px);
-  min-height: 310px;
 
   margin: 0 auto;
 
   overflow: hidden;
 
   border: 1px solid var(--border);
-  border-radius: 24px;
+  border-radius: 22px;
 
   background: var(--cream);
 
   box-shadow: var(--shadow);
-
-  isolation: isolate;
 }
 
-/* Property photograph */
+/* Top section */
 
-.property-image {
-  position: absolute;
-  inset: 0 0 0 auto;
+.property-header {
+  display: grid;
 
-  z-index: -3;
+  min-height: 125px;
 
-  width: 63%;
-  height: 100%;
-
-  background-image:
-    url("property.jpg");
-
-  background-position: center;
-  background-size: cover;
-
-  transform: scale(1.02);
-
-  transition:
-    transform 1.2s ease;
+  grid-template-columns:
+    43%
+    57%;
 }
 
-/* Soft colour fade */
-
-.image-overlay {
-  position: absolute;
-  inset: 0;
-
-  z-index: -2;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--cream) 0%,
-      var(--cream) 28%,
-      rgba(243, 238, 229, 0.96) 37%,
-      rgba(243, 238, 229, 0.68) 49%,
-      rgba(243, 238, 229, 0.18) 68%,
-      rgba(36, 44, 34, 0.08) 100%
-    ),
-    linear-gradient(
-      0deg,
-      rgba(36, 44, 34, 0.15) 0%,
-      transparent 48%
-    );
-}
-
-/* Layout */
-
-.widget-content {
-  display: flex;
-
-  min-height: 310px;
-
-  flex-direction: column;
-  justify-content: space-between;
-
-  padding:
-    30px
-    30px
-    20px;
-}
-
-/* Small check-in card */
-
-.arrival-card {
-  position: absolute;
-
-  top: 16px;
-  right: 20px;
-
-  z-index: 3;
-
-  display: flex;
-
-  align-items: center;
-  gap: 10px;
-
-  padding:
-    7px
-    11px;
-
-  border:
-    1px solid rgba(255, 255, 255, 0.28);
-
-  border-radius: 11px;
-
-  background:
-    rgba(35, 44, 33, 0.34);
-
-  color: white;
-
-  backdrop-filter:
-    blur(12px);
-
-  -webkit-backdrop-filter:
-    blur(12px);
-}
-
-.arrival-item {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 0;
-}
-
-.arrival-item span {
-  font-size: 0.42rem;
-  font-weight: 500;
-
-  letter-spacing: 0.1em;
-
-  opacity: 0.77;
-
-  text-transform: uppercase;
-}
-
-.arrival-item strong {
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size: 0.72rem;
-  font-weight: 500;
-}
-
-.arrival-divider {
-  width: 1px;
-  height: 21px;
-
-  background:
-    rgba(255, 255, 255, 0.29);
-}
-
-/* Property heading */
+/* Property text */
 
 .property-heading {
-  max-width: 500px;
+  display: flex;
+
+  min-width: 0;
+
+  flex-direction: column;
+  justify-content: center;
+
+  padding:
+    17px
+    22px;
 }
 
 .location {
   display: flex;
 
   align-items: center;
-  gap: 7px;
+  gap: 6px;
 
   margin:
     0
     0
-    8px;
+    5px;
 
   color: var(--sage);
 
-  font-size: 0.57rem;
+  font-size: 0.5rem;
   font-weight: 600;
 
   letter-spacing: 0.12em;
@@ -234,11 +113,11 @@ body {
 .location-pin {
   position: relative;
 
-  width: 11px;
-  height: 11px;
+  width: 10px;
+  height: 10px;
 
   border:
-    1.3px solid currentColor;
+    1.2px solid currentColor;
 
   border-radius:
     50%
@@ -253,23 +132,20 @@ body {
 .location-pin::after {
   position: absolute;
 
-  top: 2.8px;
-  left: 2.8px;
+  top: 2.4px;
+  left: 2.4px;
 
   width: 3px;
   height: 3px;
 
   border-radius: 50%;
 
-  background:
-    currentColor;
+  background: currentColor;
 
   content: "";
 }
 
 h1 {
-  max-width: 470px;
-
   margin: 0;
 
   color: var(--sage-dark);
@@ -281,17 +157,16 @@ h1 {
 
   font-size:
     clamp(
-      2.25rem,
-      5vw,
-      4.25rem
+      1.8rem,
+      4.2vw,
+      3.5rem
     );
 
   font-weight: 500;
 
-  letter-spacing:
-    -0.052em;
+  letter-spacing: -0.05em;
 
-  line-height: 0.86;
+  line-height: 0.87;
 }
 
 h1 span {
@@ -300,7 +175,7 @@ h1 span {
 
 .stay-dates {
   margin:
-    11px
+    8px
     0
     0;
 
@@ -311,23 +186,117 @@ h1 span {
     Georgia,
     serif;
 
-  font-size: 0.72rem;
+  font-size: 0.62rem;
 }
 
-/* Bottom layout */
+/* Property photograph */
 
-.bottom-section {
+.property-image {
+  position: relative;
+
+  min-width: 0;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(243, 238, 229, 0.5),
+      rgba(243, 238, 229, 0.05) 30%,
+      rgba(37, 46, 35, 0.08)
+    ),
+    url("property.jpg");
+
+  background-position: center;
+  background-size: cover;
+}
+
+/* Check-in card */
+
+.arrival-card {
+  position: absolute;
+
+  top: 12px;
+  right: 13px;
+
+  display: flex;
+
+  align-items: center;
+  gap: 9px;
+
+  padding:
+    6px
+    9px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.27);
+
+  border-radius: 10px;
+
+  background:
+    rgba(36, 45, 34, 0.37);
+
+  color: white;
+
+  backdrop-filter:
+    blur(10px);
+
+  -webkit-backdrop-filter:
+    blur(10px);
+}
+
+.arrival-item {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.arrival-item span {
+  font-size: 0.38rem;
+  font-weight: 500;
+
+  letter-spacing: 0.09em;
+
+  opacity: 0.78;
+
+  text-transform: uppercase;
+}
+
+.arrival-item strong {
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 0.65rem;
+  font-weight: 500;
+}
+
+.arrival-divider {
+  width: 1px;
+  height: 18px;
+
+  background:
+    rgba(255, 255, 255, 0.28);
+}
+
+/* Bottom row */
+
+.information-row {
   display: grid;
 
   grid-template-columns:
-    150px
+    155px
     minmax(0, 1fr);
 
-  gap: 10px;
+  gap: 8px;
 
-  align-items: stretch;
+  padding:
+    8px;
 
-  margin-top: 19px;
+  border-top:
+    1px solid rgba(63, 74, 59, 0.1);
+
+  background:
+    rgba(250, 247, 241, 0.42);
 }
 
 /* Guest summary */
@@ -338,27 +307,23 @@ h1 span {
   min-width: 0;
 
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+
+  gap: 9px;
 
   padding:
-    10px
-    12px;
+    6px
+    9px;
 
   border:
     1px solid var(--border);
 
-  border-radius: 15px;
+  border-radius: 12px;
 
   background: var(--glass);
-
-  backdrop-filter:
-    blur(15px);
-
-  -webkit-backdrop-filter:
-    blur(15px);
 }
 
-.guest-item {
+.guest-total {
   display: flex;
 
   flex-direction: column;
@@ -366,7 +331,7 @@ h1 span {
   align-items: center;
 }
 
-.guest-item strong {
+.guest-total strong {
   color: var(--sage-dark);
 
   font-family:
@@ -374,27 +339,25 @@ h1 span {
     Georgia,
     serif;
 
-  font-size: 1.45rem;
+  font-size: 1.2rem;
   font-weight: 500;
 
   line-height: 1;
 }
 
-.guest-item span {
-  margin-top: 2px;
-
+.guest-total span {
   color: var(--muted);
 
-  font-size: 0.48rem;
+  font-size: 0.39rem;
+
+  letter-spacing: 0.06em;
 
   text-transform: uppercase;
 }
 
 .guest-divider {
   width: 1px;
-  height: 34px;
-
-  flex-shrink: 0;
+  height: 29px;
 
   background:
     rgba(63, 74, 59, 0.13);
@@ -403,70 +366,77 @@ h1 span {
 .guest-breakdown {
   display: flex;
 
-  min-width: 0;
-
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 
   color: var(--muted);
 
-  font-size: 0.51rem;
+  font-size: 0.44rem;
 
   white-space: nowrap;
 }
 
-/* Weather panel */
+.guest-breakdown strong {
+  color: var(--sage-dark);
+
+  font-weight: 600;
+}
+
+/* Weather */
 
 .weather-panel {
+  display: grid;
+
   min-width: 0;
 
+  grid-template-columns:
+    115px
+    minmax(0, 1fr);
+
+  gap: 8px;
+
+  align-items: center;
+
   padding:
-    9px
-    10px
-    9px;
+    6px
+    7px;
 
   border:
     1px solid var(--border);
 
-  border-radius: 15px;
+  border-radius: 12px;
 
   background: var(--glass);
-
-  backdrop-filter:
-    blur(15px);
-
-  -webkit-backdrop-filter:
-    blur(15px);
 }
 
-.weather-header {
+.weather-heading {
   display: flex;
 
-  align-items: flex-end;
-  justify-content: space-between;
+  min-width: 0;
 
-  gap: 10px;
+  flex-direction: column;
 
-  margin-bottom: 6px;
+  justify-content: center;
 }
 
-.weather-label {
+.weather-heading div {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.weather-heading span {
   color: var(--sage);
 
-  font-size: 0.43rem;
+  font-size: 0.38rem;
   font-weight: 600;
 
-  letter-spacing: 0.12em;
+  letter-spacing: 0.09em;
 
   text-transform: uppercase;
 }
 
-.weather-header h2 {
-  margin:
-    0
-    0
-    1px;
-
+.weather-heading strong {
   color: var(--sage-dark);
 
   font-family:
@@ -474,22 +444,19 @@ h1 span {
     Georgia,
     serif;
 
-  font-size: 0.84rem;
+  font-size: 0.68rem;
   font-weight: 600;
 }
 
-.weather-location {
+.weather-heading small {
+  margin-top: 2px;
+
   color: var(--muted);
 
-  font-size: 0.46rem;
+  font-size: 0.38rem;
 }
 
-/*
-  minmax(0, 1fr) is important here.
-
-  It forces all five days to share the available width
-  instead of allowing Friday to overflow.
-*/
+/* Five weather columns */
 
 .forecast-grid {
   display: grid;
@@ -506,26 +473,25 @@ h1 span {
     );
 
   border:
-    1px solid rgba(63, 74, 59, 0.1);
+    1px solid rgba(63, 74, 59, 0.09);
 
-  border-radius: 10px;
+  border-radius: 9px;
 
   background:
-    rgba(255, 255, 255, 0.35);
+    rgba(255, 255, 255, 0.3);
 }
 
 .forecast-day {
   min-width: 0;
 
-  padding:
-    5px
-    2px
-    5px;
-
   overflow: hidden;
 
+  padding:
+    3px
+    1px;
+
   border-right:
-    1px solid rgba(63, 74, 59, 0.09);
+    1px solid rgba(63, 74, 59, 0.08);
 
   text-align: center;
 }
@@ -537,10 +503,8 @@ h1 span {
 .day-name {
   color: var(--sage-dark);
 
-  font-size: 0.48rem;
+  font-size: 0.39rem;
   font-weight: 600;
-
-  letter-spacing: 0.05em;
 
   text-transform: uppercase;
 }
@@ -548,13 +512,12 @@ h1 span {
 .weather-icon {
   display: grid;
 
-  width: 24px;
-  height: 24px;
+  width: 19px;
+  height: 19px;
 
   margin:
-    2px
-    auto
-    1px;
+    1px
+    auto;
 
   place-items: center;
 
@@ -566,19 +529,17 @@ h1 span {
 
   width: 100%;
   height: 100%;
-
-  overflow: visible;
 }
 
 .temperatures {
   display: flex;
 
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
 
-  gap: 3px;
+  gap: 2px;
 
-  font-size: 0.54rem;
+  font-size: 0.42rem;
 
   white-space: nowrap;
 }
@@ -594,135 +555,93 @@ h1 span {
 }
 
 .condition {
-  overflow: hidden;
-
-  margin-top: 1px;
-
-  color: var(--muted);
-
-  font-size: 0.39rem;
-
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* Subtle photograph movement */
-
-@media (hover: hover) and (pointer: fine) {
-  .property-widget:hover
-  .property-image {
-    transform:
-      scale(1.045);
-  }
+  display: none;
 }
 
 /* Mobile */
 
-@media (max-width: 650px) {
-  body {
-    padding: 3px;
-  }
-
+@media (max-width: 600px) {
   .property-widget {
-    min-height: 410px;
-
-    border-radius: 20px;
+    border-radius: 18px;
   }
 
-  .property-image {
-    inset:
-      0
-      0
-      auto;
+  .property-header {
+    min-height: 145px;
 
-    width: 100%;
-    height: 53%;
-
-    background-position: center;
-  }
-
-  .image-overlay {
-    background:
-      linear-gradient(
-        0deg,
-        var(--cream) 0%,
-        var(--cream) 47%,
-        rgba(243, 238, 229, 0.96) 56%,
-        rgba(243, 238, 229, 0.45) 74%,
-        rgba(36, 44, 34, 0.08) 100%
-      );
-  }
-
-  .widget-content {
-    min-height: 410px;
-
-    padding:
-      17px
-      10px
-      10px;
-  }
-
-  .arrival-card {
-    top: 11px;
-    right: 10px;
-
-    padding:
-      6px
-      9px;
+    grid-template-columns:
+      48%
+      52%;
   }
 
   .property-heading {
-    padding-top: 185px;
-  }
-
-  .location {
-    margin-bottom: 5px;
-
-    font-size: 0.48rem;
+    padding:
+      14px
+      10px;
   }
 
   h1 {
     font-size:
       clamp(
-        2rem,
-        10.5vw,
-        3rem
+        1.65rem,
+        8vw,
+        2.5rem
       );
+  }
 
-    line-height: 0.88;
+  .location {
+    font-size: 0.4rem;
   }
 
   .stay-dates {
-    margin-top: 7px;
-
-    font-size: 0.61rem;
+    font-size: 0.5rem;
   }
 
-  .bottom-section {
-    grid-template-columns:
-      100px
-      minmax(0, 1fr);
+  .arrival-card {
+    top: 8px;
+    right: 8px;
 
     gap: 6px;
 
-    margin-top: 11px;
+    padding:
+      5px
+      7px;
+  }
+
+  .arrival-item span {
+    font-size: 0.31rem;
+  }
+
+  .arrival-item strong {
+    font-size: 0.55rem;
+  }
+
+  .information-row {
+    grid-template-columns:
+      80px
+      minmax(0, 1fr);
+
+    gap: 5px;
+
+    padding: 5px;
   }
 
   .guest-summary {
     flex-direction: column;
 
-    justify-content: center;
-
-    gap: 3px;
+    gap: 2px;
 
     padding:
-      7px
-      4px;
+      4px
+      2px;
   }
 
   .guest-divider {
-    width: 38px;
+    width: 30px;
     height: 1px;
+  }
+
+  .guest-total strong {
+    font-size: 1rem;
   }
 
   .guest-breakdown {
@@ -730,86 +649,77 @@ h1 span {
 
     gap: 0;
 
-    font-size: 0.39rem;
+    font-size: 0.33rem;
   }
 
   .weather-panel {
+    grid-template-columns:
+      72px
+      minmax(0, 1fr);
+
+    gap: 4px;
+
     padding:
-      7px
-      5px
-      6px;
+      4px;
   }
 
-  .weather-header {
-    margin-bottom: 4px;
+  .weather-heading span {
+    font-size: 0.3rem;
   }
 
-  .weather-header h2 {
-    font-size: 0.72rem;
+  .weather-heading strong {
+    font-size: 0.54rem;
   }
 
-  .weather-location {
-    display: none;
-  }
-
-  .forecast-day {
-    padding:
-      4px
-      1px;
+  .weather-heading small {
+    font-size: 0.3rem;
   }
 
   .day-name {
-    font-size: 0.42rem;
+    font-size: 0.33rem;
   }
 
   .weather-icon {
-    width: 21px;
-    height: 21px;
+    width: 16px;
+    height: 16px;
   }
 
   .temperatures {
-    gap: 2px;
-
-    font-size: 0.47rem;
-  }
-
-  .condition {
-    display: none;
+    font-size: 0.36rem;
   }
 }
 
-/* Very narrow mobile screens */
+@media (max-width: 380px) {
+  .property-header {
+    min-height: 155px;
 
-@media (max-width: 365px) {
-  .property-widget,
-  .widget-content {
-    min-height: 425px;
+    grid-template-columns:
+      51%
+      49%;
   }
 
   .property-heading {
-    padding-top: 180px;
+    padding-left: 8px;
   }
 
-  .bottom-section {
+  h1 {
+    font-size: 1.55rem;
+  }
+
+  .information-row {
     grid-template-columns:
-      82px
+      69px
       minmax(0, 1fr);
   }
 
-  .guest-item strong {
-    font-size: 1.2rem;
+  .weather-panel {
+    grid-template-columns:
+      58px
+      minmax(0, 1fr);
   }
 
-  .weather-label {
+  .weather-heading small,
+  .weather-heading span {
     display: none;
   }
-}
-
-/* Accessibility */
-
-@media (prefers-reduced-motion: reduce) {
-  .property-image {
-    transition: none;
-    transform: none;
   }
-}
