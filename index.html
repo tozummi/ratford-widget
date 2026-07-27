@@ -2,95 +2,103 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f3eee5">
-  <meta name="description" content="Ratford Bridge Farmhouse staycation information and weather widget">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#f3eee5"
+  >
+
   <title>Ratford Bridge Farmhouse</title>
 
-  <link rel="stylesheet" href="styles.css">
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
 </head>
 
 <body>
-  <main class="stay-widget">
-    <div class="property-photo" aria-hidden="true"></div>
-    <div class="photo-shade" aria-hidden="true"></div>
-    <div class="grain" aria-hidden="true"></div>
+  <main class="property-widget">
+
+    <!-- Property photograph -->
+    <div
+      class="property-image"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Soft fade between the text and image -->
+    <div
+      class="image-overlay"
+      aria-hidden="true"
+    ></div>
 
     <div class="widget-content">
-      <section class="hero-copy">
-        <p class="eyebrow">
-          <span class="pin-icon" aria-hidden="true"></span>
+
+      <!-- Small details over the photograph -->
+      <div class="arrival-card">
+        <div class="arrival-item">
+          <span>Check in</span>
+          <strong>3pm</strong>
+        </div>
+
+        <div class="arrival-divider"></div>
+
+        <div class="arrival-item">
+          <span>Checkout</span>
+          <strong>10am</strong>
+        </div>
+      </div>
+
+      <!-- Main property information -->
+      <section class="property-heading">
+        <p class="location">
+          <span class="location-pin"></span>
           Calne, Wiltshire
         </p>
 
-        <h1>Ratford Bridge<br>Farmhouse</h1>
+        <h1>
+          Ratford Bridge
+          <span>Farmhouse</span>
+        </h1>
 
-        <div class="arrival-details">
-          <div class="detail">
-            <span class="detail-label">Check in</span>
-            <strong>3pm</strong>
-          </div>
-
-          <span class="detail-divider" aria-hidden="true"></span>
-
-          <div class="detail">
-            <span class="detail-label">Checkout</span>
-            <strong>10am</strong>
-          </div>
-
-          <span class="detail-divider desktop-only" aria-hidden="true"></span>
-
-          <div class="detail drive-detail">
-            <span class="detail-label">From East London</span>
-            <strong>Approx. 2–2½ hrs</strong>
-          </div>
-        </div>
+        <p class="stay-dates">
+          Monday 17 – Friday 21 August 2026
+        </p>
       </section>
 
-      <section class="bottom-panel">
-        <div class="countdown-card">
-          <span class="countdown-kicker">Our countryside escape</span>
-          <div class="countdown-line">
-            <strong id="countdown-number">—</strong>
-            <span id="countdown-label">days to go</span>
+      <!-- Weather banner -->
+      <section class="weather-panel">
+
+        <div class="weather-header">
+          <div>
+            <span class="weather-label">
+              Five-day outlook
+            </span>
+
+            <h2>Stay forecast</h2>
           </div>
-          <span class="stay-dates">17–21 August 2026</span>
+
+          <span class="weather-location">
+            Ratford Bridge
+          </span>
         </div>
 
-        <div class="stay-facts" aria-label="Stay details">
-          <div class="fact">
-            <span class="fact-icon" aria-hidden="true">5</span>
-            <span><strong>Days</strong><small>Mon–Fri</small></span>
-          </div>
+        <div
+          class="forecast-grid"
+          id="forecast-grid"
+        ></div>
 
-          <div class="fact">
-            <span class="fact-icon" aria-hidden="true">24</span>
-            <span><strong>Guests</strong><small>Family stay</small></span>
-          </div>
-
-          <div class="fact">
-            <span class="fact-icon people-icon" aria-hidden="true"></span>
-            <span><strong>16 adults</strong><small>5 children · 3 babies</small></span>
-          </div>
+        <div class="weather-footer">
+          <span>High / low temperature</span>
+          <span>Example forecast: 27–31 July</span>
         </div>
 
-        <div class="weather-section">
-          <div class="weather-heading">
-            <div>
-              <span class="section-kicker">Monday to Friday</span>
-              <h2>Stay forecast</h2>
-            </div>
-            <span id="weather-status">Checking availability…</span>
-          </div>
-
-          <div class="forecast-grid" id="forecast-grid" aria-live="polite"></div>
-
-          <div class="weather-footer">
-            <span>High / low temperature</span>
-            <span>Weather by Open-Meteo</span>
-          </div>
-        </div>
       </section>
+
     </div>
   </main>
 
