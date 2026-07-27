@@ -193,20 +193,35 @@ h1 span {
 
 .property-image {
   position: relative;
-
   min-width: 0;
 
   background-image:
     linear-gradient(
       90deg,
-      rgba(243, 238, 229, 0.5),
-      rgba(243, 238, 229, 0.05) 30%,
-      rgba(37, 46, 35, 0.08)
+      var(--cream) 0%,
+      rgba(243, 238, 229, 0.92) 7%,
+      rgba(243, 238, 229, 0.65) 16%,
+      rgba(243, 238, 229, 0.28) 28%,
+      rgba(243, 238, 229, 0.08) 40%,
+      transparent 53%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(35, 44, 33, 0.12),
+      transparent 45%
     ),
     url("property.jpg");
 
-  background-position: center;
   background-size: cover;
+
+  /*
+    42% shows slightly more of the left side of the photo.
+    Lower the number further to move the image farther right
+    and reveal even more of its left-hand side.
+  */
+  background-position: 42% center;
+
+  background-repeat: no-repeat;
 }
 
 /* Check-in card */
