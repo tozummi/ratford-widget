@@ -24,36 +24,34 @@
 <body>
   <main class="property-widget">
 
-    <!-- Property photograph -->
     <div
       class="property-image"
       aria-hidden="true"
     ></div>
 
-    <!-- Soft fade between the text and image -->
     <div
       class="image-overlay"
       aria-hidden="true"
     ></div>
 
-    <div class="widget-content">
-
-      <!-- Small details over the photograph -->
-      <div class="arrival-card">
-        <div class="arrival-item">
-          <span>Check in</span>
-          <strong>3pm</strong>
-        </div>
-
-        <div class="arrival-divider"></div>
-
-        <div class="arrival-item">
-          <span>Checkout</span>
-          <strong>10am</strong>
-        </div>
+    <!-- Small check-in information over the photograph -->
+    <div class="arrival-card">
+      <div class="arrival-item">
+        <span>Check in</span>
+        <strong>3pm</strong>
       </div>
 
-      <!-- Main property information -->
+      <div class="arrival-divider"></div>
+
+      <div class="arrival-item">
+        <span>Checkout</span>
+        <strong>10am</strong>
+      </div>
+    </div>
+
+    <div class="widget-content">
+
+      <!-- Property information -->
       <section class="property-heading">
         <p class="location">
           <span class="location-pin"></span>
@@ -66,35 +64,51 @@
         </h1>
 
         <p class="stay-dates">
-          Monday 17 – Friday 21 August 2026
+          17–21 August 2026
         </p>
       </section>
 
-      <!-- Weather banner -->
-      <section class="weather-panel">
+      <!-- Bottom information area -->
+      <section class="bottom-section">
 
-        <div class="weather-header">
-          <div>
-            <span class="weather-label">
-              Five-day outlook
-            </span>
-
-            <h2>Stay forecast</h2>
+        <!-- Guest summary -->
+        <div class="guest-summary">
+          <div class="guest-item">
+            <strong>24</strong>
+            <span>Guests</span>
           </div>
 
-          <span class="weather-location">
-            Ratford Bridge
-          </span>
+          <div class="guest-divider"></div>
+
+          <div class="guest-breakdown">
+            <span>16 adults</span>
+            <span>5 children</span>
+            <span>3 babies</span>
+          </div>
         </div>
 
-        <div
-          class="forecast-grid"
-          id="forecast-grid"
-        ></div>
+        <!-- Weather -->
+        <div class="weather-panel">
 
-        <div class="weather-footer">
-          <span>High / low temperature</span>
-          <span>Example forecast: 27–31 July</span>
+          <div class="weather-header">
+            <div>
+              <span class="weather-label">
+                Monday to Friday
+              </span>
+
+              <h2>Five-day forecast</h2>
+            </div>
+
+            <span class="weather-location">
+              Ratford Bridge
+            </span>
+          </div>
+
+          <div
+            class="forecast-grid"
+            id="forecast-grid"
+          ></div>
+
         </div>
 
       </section>
