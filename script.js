@@ -1,45 +1,19 @@
-const forecast = [
-  {
-    day: "Mon",
-    high: 24,
-    low: 17,
-    condition: "Mostly sunny",
-    icon: "sun"
-  },
-  {
-    day: "Tue",
-    high: 28,
-    low: 15,
-    condition: "Partly sunny",
-    icon: "partly"
-  },
-  {
-    day: "Wed",
-    high: 29,
-    low: 15,
-    condition: "Mostly sunny",
-    icon: "sun"
-  },
-  {
-    day: "Thu",
-    high: 24,
-    low: 11,
-    condition: "Partly sunny",
-    icon: "partly"
-  },
-  {
-    day: "Fri",
-    high: 24,
-    low: 11,
-    condition: "Partial sunshine",
-    icon: "partly"
-  }
+const STAY_DATES = [
+  { date: "2026-08-17", day: "Mon" },
+  { date: "2026-08-18", day: "Tue" },
+  { date: "2026-08-19", day: "Wed" },
+  { date: "2026-08-20", day: "Thu" },
+  { date: "2026-08-21", day: "Fri" },
+  { date: "2026-08-22", day: "Sat" }
 ];
 
-const forecastGrid =
-  document.getElementById(
-    "forecast-grid"
-  );
+/*
+  Ratford Bridge Farmhouse / SN11 9JX
+*/
+const LATITUDE = 51.445518;
+const LONGITUDE = -2.027169;
+
+const forecastGrid = document.getElementById("forecast-grid");
 
 function createWeatherIcon(type) {
   const strokeSettings = `
@@ -52,10 +26,7 @@ function createWeatherIcon(type) {
 
   const icons = {
     sun: `
-      <svg
-        viewBox="0 0 40 40"
-        aria-hidden="true"
-      >
+      <svg viewBox="0 0 40 40" aria-hidden="true">
         <circle
           cx="20"
           cy="20"
@@ -80,10 +51,7 @@ function createWeatherIcon(type) {
     `,
 
     partly: `
-      <svg
-        viewBox="0 0 40 40"
-        aria-hidden="true"
-      >
+      <svg viewBox="0 0 40 40" aria-hidden="true">
         <circle
           cx="14"
           cy="13"
@@ -105,12 +73,8 @@ function createWeatherIcon(type) {
           d="
             M11 29h18
             a5.5 5.5 0 0 0 .3-11
-
-            a8.5 8.5 0 0 0
-            -15.9 2.2
-
-            A4.5 4.5 0 0 0
-            11 29Z
+            a8.5 8.5 0 0 0 -15.9 2.2
+            A4.5 4.5 0 0 0 11 29Z
           "
           ${strokeSettings}
         ></path>
@@ -118,22 +82,13 @@ function createWeatherIcon(type) {
     `,
 
     cloud: `
-      <svg
-        viewBox="0 0 40 40"
-        aria-hidden="true"
-      >
+      <svg viewBox="0 0 40 40" aria-hidden="true">
         <path
           d="
             M9 29h21
-
-            a6 6 0 0 0
-            .3-12
-
-            a9.8 9.8 0 0 0
-            -18.6 2.7
-
-            A5 5 0 0 0
-            9 29Z
+            a6 6 0 0 0 .3-12
+            a9.8 9.8 0 0 0 -18.6 2.7
+            A5 5 0 0 0 9 29Z
           "
           ${strokeSettings}
         ></path>
@@ -141,22 +96,13 @@ function createWeatherIcon(type) {
     `,
 
     rain: `
-      <svg
-        viewBox="0 0 40 40"
-        aria-hidden="true"
-      >
+      <svg viewBox="0 0 40 40" aria-hidden="true">
         <path
           d="
             M9 24h21
-
-            a6 6 0 0 0
-            .3-12
-
-            a9.8 9.8 0 0 0
-            -18.6 2.7
-
-            A5 5 0 0 0
-            9 24Z
+            a6 6 0 0 0 .3-12
+            a9.8 9.8 0 0 0 -18.6 2.7
+            A5 5 0 0 0 9 24Z
           "
           ${strokeSettings}
         ></path>
@@ -176,43 +122,174 @@ function createWeatherIcon(type) {
   return icons[type] || icons.cloud;
 }
 
-function renderForecast() {
-  forecastGrid.innerHTML =
-    forecast
-      .map(day => {
-        return `
-          <article
-            class="forecast-day"
-            title="${day.condition}"
-          >
-            <div class="day-name">
-              ${day.day}
-            </div>
+function getWeatherDetails(code) {
+  if (code === 0) {
+    return {
+      condition: "Clear and sunny",
+      icon: "sun"
+    };
+  }
 
-            <div
-              class="weather-icon"
-              aria-label="${day.condition}"
-            >
-              ${createWeatherIcon(day.icon)}
-            </div>
+  if (code === 1 || code === 2) {
+    return {
+      condition: "Partly cloudy",
+      icon: "partly"
+    };
+  }
 
-            <div class="temperatures">
-              <span class="temperature-high">
-                ${day.high}°
-              </span>
+  if (code === 3 || code === 45 || code === 48) {
+    return {
+      condition: "Cloudy",
+      icon: "cloud"
+    };
+  }
 
-              <span class="temperature-low">
-                ${day.low}°
-              </span>
-            </div>
+  if (
+    (code >= 51 && code <= 67) ||
+    (code >= 80 && code <= 82) ||
+    (code >= 95 && code <= 99)
+  ) {
+    return {
+      condition: "Rain likely",
+      icon: "rain"
+    };
+  }
 
-            <div class="condition">
-              ${day.condition}
-            </div>
-          </article>
-        `;
-      })
-      .join("");
+  if (code >= 71 && code <= 77) {
+    return {
+      condition: "Snow",
+      icon: "cloud"
+    };
+  }
+
+  return {
+    condition: "Mixed weather",
+    icon: "partly"
+  };
 }
 
-renderForecast();
+function createPendingForecast() {
+  return STAY_DATES.map(item => ({
+    day: item.day,
+    date: item.date,
+    high: null,
+    low: null,
+    condition: "Forecast pending",
+    icon: "cloud"
+  }));
+}
+
+function renderForecast(forecast) {
+  forecastGrid.innerHTML = forecast
+    .map(day => {
+      const high =
+        day.high === null || day.high === undefined
+          ? "–"
+          : `${Math.round(day.high)}°`;
+
+      const low =
+        day.low === null || day.low === undefined
+          ? "–"
+          : `${Math.round(day.low)}°`;
+
+      return `
+        <article
+          class="forecast-day"
+          title="${day.condition}"
+        >
+          <div class="day-name">
+            ${day.day}
+          </div>
+
+          <div
+            class="weather-icon"
+            aria-label="${day.condition}"
+          >
+            ${createWeatherIcon(day.icon)}
+          </div>
+
+          <div class="temperatures">
+            <span class="temperature-high">
+              ${high}
+            </span>
+
+            <span class="temperature-low">
+              ${low}
+            </span>
+          </div>
+
+          <div class="condition">
+            ${day.condition}
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+async function loadForecast() {
+  renderForecast(createPendingForecast());
+
+  const apiUrl =
+    `https://api.open-meteo.com/v1/forecast` +
+    `?latitude=${LATITUDE}` +
+    `&longitude=${LONGITUDE}` +
+    `&daily=weather_code,temperature_2m_max,temperature_2m_min` +
+    `&temperature_unit=celsius` +
+    `&timezone=Europe%2FLondon` +
+    `&forecast_days=16`;
+
+  try {
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      throw new Error("Weather request failed");
+    }
+
+    const data = await response.json();
+
+    const availableForecast = new Map();
+
+    data.daily.time.forEach((date, index) => {
+      const weather = getWeatherDetails(
+        data.daily.weather_code[index]
+      );
+
+      availableForecast.set(date, {
+        high: data.daily.temperature_2m_max[index],
+        low: data.daily.temperature_2m_min[index],
+        condition: weather.condition,
+        icon: weather.icon
+      });
+    });
+
+    const forecast = STAY_DATES.map(item => {
+      const result = availableForecast.get(item.date);
+
+      if (!result) {
+        return {
+          day: item.day,
+          date: item.date,
+          high: null,
+          low: null,
+          condition: "Forecast pending",
+          icon: "cloud"
+        };
+      }
+
+      return {
+        day: item.day,
+        date: item.date,
+        ...result
+      };
+    });
+
+    renderForecast(forecast);
+  } catch (error) {
+    console.error("Could not load forecast:", error);
+
+    renderForecast(createPendingForecast());
+  }
+}
+
+loadForecast();
