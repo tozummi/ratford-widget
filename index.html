@@ -24,35 +24,11 @@
 <body>
   <main class="property-widget">
 
-    <div
-      class="property-image"
-      aria-hidden="true"
-    ></div>
+    <!-- Top row -->
+    <section class="property-header">
 
-    <div
-      class="image-overlay"
-      aria-hidden="true"
-    ></div>
-
-    <!-- Small check-in information over the photograph -->
-    <div class="arrival-card">
-      <div class="arrival-item">
-        <span>Check in</span>
-        <strong>3pm</strong>
-      </div>
-
-      <div class="arrival-divider"></div>
-
-      <div class="arrival-item">
-        <span>Checkout</span>
-        <strong>10am</strong>
-      </div>
-    </div>
-
-    <div class="widget-content">
-
-      <!-- Property information -->
-      <section class="property-heading">
+      <!-- Property writing -->
+      <div class="property-heading">
         <p class="location">
           <span class="location-pin"></span>
           Calne, Wiltshire
@@ -66,54 +42,71 @@
         <p class="stay-dates">
           17–21 August 2026
         </p>
-      </section>
+      </div>
 
-      <!-- Bottom information area -->
-      <section class="bottom-section">
+      <!-- Property photograph -->
+      <div class="property-image">
 
-        <!-- Guest summary -->
-        <div class="guest-summary">
-          <div class="guest-item">
-            <strong>24</strong>
-            <span>Guests</span>
+        <div class="arrival-card">
+          <div class="arrival-item">
+            <span>Check in</span>
+            <strong>3pm</strong>
           </div>
 
-          <div class="guest-divider"></div>
+          <div class="arrival-divider"></div>
 
-          <div class="guest-breakdown">
-            <span>16 adults</span>
-            <span>5 children</span>
-            <span>3 babies</span>
+          <div class="arrival-item">
+            <span>Checkout</span>
+            <strong>10am</strong>
           </div>
         </div>
 
-        <!-- Weather -->
-        <div class="weather-panel">
+      </div>
 
-          <div class="weather-header">
-            <div>
-              <span class="weather-label">
-                Monday to Friday
-              </span>
+    </section>
 
-              <h2>Five-day forecast</h2>
-            </div>
+    <!-- Bottom information strip -->
+    <section class="information-row">
 
-            <span class="weather-location">
-              Ratford Bridge
-            </span>
-          </div>
+      <!-- Guest summary -->
+      <div class="guest-summary">
 
-          <div
-            class="forecast-grid"
-            id="forecast-grid"
-          ></div>
-
+        <div class="guest-total">
+          <strong>24</strong>
+          <span>Guests</span>
         </div>
 
-      </section>
+        <div class="guest-divider"></div>
 
-    </div>
+        <div class="guest-breakdown">
+          <span><strong>16</strong> adults</span>
+          <span><strong>5</strong> children</span>
+          <span><strong>3</strong> babies</span>
+        </div>
+
+      </div>
+
+      <!-- Weather forecast -->
+      <div class="weather-panel">
+
+        <div class="weather-heading">
+          <div>
+            <span>Monday to Friday</span>
+            <strong>Five-day forecast</strong>
+          </div>
+
+          <small>High / low</small>
+        </div>
+
+        <div
+          class="forecast-grid"
+          id="forecast-grid"
+        ></div>
+
+      </div>
+
+    </section>
+
   </main>
 
   <script src="script.js"></script>
