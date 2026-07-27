@@ -66,12 +66,9 @@ body {
 
 .property-header {
   display: grid;
-
   min-height: 125px;
 
-  grid-template-columns:
-    40%
-    60%;
+  grid-template-columns: 30% 70%;
 }
 
 /* Property text */
@@ -710,8 +707,8 @@ h1 span {
     min-height: 155px;
 
     grid-template-columns:
-      51%
-      49%;
+  30%
+  70%;
   }
 
   .property-heading {
