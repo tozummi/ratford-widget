@@ -70,8 +70,8 @@ body {
   min-height: 125px;
 
   grid-template-columns:
-    43%
-    57%;
+    40%
+    60%;
 }
 
 /* Property text */
@@ -86,7 +86,7 @@ body {
 
   padding:
     17px
-    22px;
+    18px;
 }
 
 .location {
@@ -199,11 +199,12 @@ h1 span {
     linear-gradient(
       90deg,
       var(--cream) 0%,
-      rgba(243, 238, 229, 0.92) 7%,
-      rgba(243, 238, 229, 0.65) 16%,
-      rgba(243, 238, 229, 0.28) 28%,
-      rgba(243, 238, 229, 0.08) 40%,
-      transparent 53%
+      rgba(243, 238, 229, 0.98) 4%,
+      rgba(243, 238, 229, 0.88) 10%,
+      rgba(243, 238, 229, 0.60) 18%,
+      rgba(243, 238, 229, 0.28) 30%,
+      rgba(243, 238, 229, 0.08) 44%,
+      transparent 56%
     ),
     linear-gradient(
       0deg,
@@ -219,7 +220,7 @@ h1 span {
     Lower the number further to move the image farther right
     and reveal even more of its left-hand side.
   */
-  background-position: 42% center;
+  background-position: 34% center;
 
   background-repeat: no-repeat;
 }
@@ -229,8 +230,8 @@ h1 span {
 .arrival-card {
   position: absolute;
 
-  top: 12px;
-  right: 13px;
+  top: 14px;
+  right: 18px;
 
   display: flex;
 
@@ -737,4 +738,4 @@ h1 span {
   .weather-heading span {
     display: none;
   }
-  }
+}
