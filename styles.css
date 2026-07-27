@@ -17,10 +17,10 @@
   --border: rgba(63, 74, 59, 0.14);
 
   --glass:
-    rgba(250, 247, 241, 0.77);
+    rgba(250, 247, 241, 0.78);
 
   --shadow:
-    0 20px 60px rgba(45, 54, 42, 0.16);
+    0 14px 40px rgba(45, 54, 42, 0.14);
 }
 
 * {
@@ -35,7 +35,7 @@ body {
 }
 
 body {
-  padding: 6px;
+  padding: 5px;
 
   color: var(--text);
 
@@ -51,14 +51,14 @@ body {
   position: relative;
 
   width: min(100%, 1120px);
-  min-height: 500px;
+  min-height: 310px;
 
   margin: 0 auto;
 
   overflow: hidden;
 
   border: 1px solid var(--border);
-  border-radius: 28px;
+  border-radius: 24px;
 
   background: var(--cream);
 
@@ -67,7 +67,7 @@ body {
   isolation: isolate;
 }
 
-/* Property image */
+/* Property photograph */
 
 .property-image {
   position: absolute;
@@ -75,7 +75,7 @@ body {
 
   z-index: -3;
 
-  width: 68%;
+  width: 63%;
   height: 100%;
 
   background-image:
@@ -84,13 +84,13 @@ body {
   background-position: center;
   background-size: cover;
 
-  transform: scale(1.025);
+  transform: scale(1.02);
 
   transition:
     transform 1.2s ease;
 }
 
-/* Fade between cream and photograph */
+/* Soft colour fade */
 
 .image-overlay {
   position: absolute;
@@ -102,15 +102,15 @@ body {
     linear-gradient(
       90deg,
       var(--cream) 0%,
-      var(--cream) 29%,
-      rgba(243, 238, 229, 0.96) 38%,
-      rgba(243, 238, 229, 0.73) 51%,
-      rgba(243, 238, 229, 0.25) 69%,
-      rgba(36, 44, 34, 0.07) 100%
+      var(--cream) 28%,
+      rgba(243, 238, 229, 0.96) 37%,
+      rgba(243, 238, 229, 0.68) 49%,
+      rgba(243, 238, 229, 0.18) 68%,
+      rgba(36, 44, 34, 0.08) 100%
     ),
     linear-gradient(
       0deg,
-      rgba(36, 44, 34, 0.23) 0%,
+      rgba(36, 44, 34, 0.15) 0%,
       transparent 48%
     );
 }
@@ -120,12 +120,15 @@ body {
 .widget-content {
   display: flex;
 
-  min-height: 500px;
+  min-height: 310px;
 
   flex-direction: column;
   justify-content: space-between;
 
-  padding: 48px 48px 30px;
+  padding:
+    30px
+    30px
+    20px;
 }
 
 /* Small check-in card */
@@ -133,34 +136,35 @@ body {
 .arrival-card {
   position: absolute;
 
-  top: 25px;
-  left: 52%;
+  top: 16px;
+  right: 20px;
+
+  z-index: 3;
 
   display: flex;
 
   align-items: center;
-  gap: 13px;
+  gap: 10px;
 
-  padding: 9px 14px;
+  padding:
+    7px
+    11px;
 
   border:
-    1px solid rgba(255, 255, 255, 0.34);
+    1px solid rgba(255, 255, 255, 0.28);
 
-  border-radius: 13px;
+  border-radius: 11px;
 
   background:
-    rgba(38, 47, 36, 0.33);
-
-  box-shadow:
-    0 8px 28px rgba(24, 31, 23, 0.13);
+    rgba(35, 44, 33, 0.34);
 
   color: white;
 
   backdrop-filter:
-    blur(13px);
+    blur(12px);
 
   -webkit-backdrop-filter:
-    blur(13px);
+    blur(12px);
 }
 
 .arrival-item {
@@ -168,16 +172,16 @@ body {
 
   flex-direction: column;
 
-  gap: 1px;
+  gap: 0;
 }
 
 .arrival-item span {
-  font-size: 0.48rem;
+  font-size: 0.42rem;
   font-weight: 500;
 
-  letter-spacing: 0.11em;
+  letter-spacing: 0.1em;
 
-  opacity: 0.78;
+  opacity: 0.77;
 
   text-transform: uppercase;
 }
@@ -188,43 +192,41 @@ body {
     Georgia,
     serif;
 
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   font-weight: 500;
 }
 
 .arrival-divider {
   width: 1px;
-  height: 25px;
+  height: 21px;
 
   background:
-    rgba(255, 255, 255, 0.32);
+    rgba(255, 255, 255, 0.29);
 }
 
-/* Property title */
+/* Property heading */
 
 .property-heading {
-  max-width: 630px;
-
-  padding-top: 40px;
+  max-width: 500px;
 }
 
 .location {
   display: flex;
 
   align-items: center;
-  gap: 9px;
+  gap: 7px;
 
   margin:
     0
     0
-    15px;
+    8px;
 
   color: var(--sage);
 
-  font-size: 0.68rem;
+  font-size: 0.57rem;
   font-weight: 600;
 
-  letter-spacing: 0.13em;
+  letter-spacing: 0.12em;
 
   text-transform: uppercase;
 }
@@ -232,11 +234,11 @@ body {
 .location-pin {
   position: relative;
 
-  width: 14px;
-  height: 14px;
+  width: 11px;
+  height: 11px;
 
   border:
-    1.5px solid currentColor;
+    1.3px solid currentColor;
 
   border-radius:
     50%
@@ -251,11 +253,11 @@ body {
 .location-pin::after {
   position: absolute;
 
-  top: 3.5px;
-  left: 3.5px;
+  top: 2.8px;
+  left: 2.8px;
 
-  width: 4px;
-  height: 4px;
+  width: 3px;
+  height: 3px;
 
   border-radius: 50%;
 
@@ -266,7 +268,7 @@ body {
 }
 
 h1 {
-  max-width: 590px;
+  max-width: 470px;
 
   margin: 0;
 
@@ -279,15 +281,15 @@ h1 {
 
   font-size:
     clamp(
-      3.2rem,
-      6.6vw,
-      5.8rem
+      2.25rem,
+      5vw,
+      4.25rem
     );
 
   font-weight: 500;
 
   letter-spacing:
-    -0.055em;
+    -0.052em;
 
   line-height: 0.86;
 }
@@ -298,7 +300,7 @@ h1 span {
 
 .stay-dates {
   margin:
-    23px
+    11px
     0
     0;
 
@@ -309,36 +311,132 @@ h1 span {
     Georgia,
     serif;
 
-  font-size: 0.93rem;
+  font-size: 0.72rem;
 }
 
-/* Weather */
+/* Bottom layout */
 
-.weather-panel {
-  width: min(100%, 790px);
+.bottom-section {
+  display: grid;
 
-  margin-top: 45px;
+  grid-template-columns:
+    150px
+    minmax(0, 1fr);
+
+  gap: 10px;
+
+  align-items: stretch;
+
+  margin-top: 19px;
+}
+
+/* Guest summary */
+
+.guest-summary {
+  display: flex;
+
+  min-width: 0;
+
+  align-items: center;
+  gap: 10px;
 
   padding:
-    16px
-    17px
-    10px;
+    10px
+    12px;
 
   border:
     1px solid var(--border);
 
-  border-radius: 19px;
+  border-radius: 15px;
 
   background: var(--glass);
 
-  box-shadow:
-    0 13px 34px rgba(45, 54, 42, 0.09);
-
   backdrop-filter:
-    blur(17px);
+    blur(15px);
 
   -webkit-backdrop-filter:
-    blur(17px);
+    blur(15px);
+}
+
+.guest-item {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.guest-item strong {
+  color: var(--sage-dark);
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 1.45rem;
+  font-weight: 500;
+
+  line-height: 1;
+}
+
+.guest-item span {
+  margin-top: 2px;
+
+  color: var(--muted);
+
+  font-size: 0.48rem;
+
+  text-transform: uppercase;
+}
+
+.guest-divider {
+  width: 1px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  background:
+    rgba(63, 74, 59, 0.13);
+}
+
+.guest-breakdown {
+  display: flex;
+
+  min-width: 0;
+
+  flex-direction: column;
+  gap: 2px;
+
+  color: var(--muted);
+
+  font-size: 0.51rem;
+
+  white-space: nowrap;
+}
+
+/* Weather panel */
+
+.weather-panel {
+  min-width: 0;
+
+  padding:
+    9px
+    10px
+    9px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 15px;
+
+  background: var(--glass);
+
+  backdrop-filter:
+    blur(15px);
+
+  -webkit-backdrop-filter:
+    blur(15px);
 }
 
 .weather-header {
@@ -347,27 +445,27 @@ h1 span {
   align-items: flex-end;
   justify-content: space-between;
 
-  gap: 15px;
+  gap: 10px;
 
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .weather-label {
   color: var(--sage);
 
-  font-size: 0.53rem;
+  font-size: 0.43rem;
   font-weight: 600;
 
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
 
   text-transform: uppercase;
 }
 
 .weather-header h2 {
   margin:
-    2px
     0
-    0;
+    0
+    1px;
 
   color: var(--sage-dark);
 
@@ -376,46 +474,58 @@ h1 span {
     Georgia,
     serif;
 
-  font-size: 1.1rem;
+  font-size: 0.84rem;
   font-weight: 600;
 }
 
 .weather-location {
   color: var(--muted);
 
-  font-size: 0.57rem;
+  font-size: 0.46rem;
 }
+
+/*
+  minmax(0, 1fr) is important here.
+
+  It forces all five days to share the available width
+  instead of allowing Friday to overflow.
+*/
 
 .forecast-grid {
   display: grid;
+
+  width: 100%;
+  min-width: 0;
 
   overflow: hidden;
 
   grid-template-columns:
     repeat(
       5,
-      minmax(70px, 1fr)
+      minmax(0, 1fr)
     );
 
   border:
-    1px solid rgba(63, 74, 59, 0.11);
+    1px solid rgba(63, 74, 59, 0.1);
 
-  border-radius: 14px;
+  border-radius: 10px;
 
   background:
-    rgba(255, 255, 255, 0.36);
+    rgba(255, 255, 255, 0.35);
 }
 
 .forecast-day {
   min-width: 0;
 
   padding:
-    11px
-    6px
-    10px;
+    5px
+    2px
+    5px;
+
+  overflow: hidden;
 
   border-right:
-    1px solid rgba(63, 74, 59, 0.1);
+    1px solid rgba(63, 74, 59, 0.09);
 
   text-align: center;
 }
@@ -427,10 +537,10 @@ h1 span {
 .day-name {
   color: var(--sage-dark);
 
-  font-size: 0.59rem;
+  font-size: 0.48rem;
   font-weight: 600;
 
-  letter-spacing: 0.07em;
+  letter-spacing: 0.05em;
 
   text-transform: uppercase;
 }
@@ -438,13 +548,13 @@ h1 span {
 .weather-icon {
   display: grid;
 
-  width: 34px;
-  height: 34px;
+  width: 24px;
+  height: 24px;
 
   margin:
-    5px
+    2px
     auto
-    3px;
+    1px;
 
   place-items: center;
 
@@ -452,6 +562,8 @@ h1 span {
 }
 
 .weather-icon svg {
+  display: block;
+
   width: 100%;
   height: 100%;
 
@@ -464,9 +576,11 @@ h1 span {
   align-items: baseline;
   justify-content: center;
 
-  gap: 5px;
+  gap: 3px;
 
-  font-size: 0.68rem;
+  font-size: 0.54rem;
+
+  white-space: nowrap;
 }
 
 .temperature-high {
@@ -482,82 +596,37 @@ h1 span {
 .condition {
   overflow: hidden;
 
-  margin-top: 3px;
+  margin-top: 1px;
 
   color: var(--muted);
 
-  font-size: 0.48rem;
+  font-size: 0.39rem;
 
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.weather-footer {
-  display: flex;
+/* Subtle photograph movement */
 
-  justify-content: space-between;
-
-  gap: 10px;
-
-  margin-top: 7px;
-
-  color:
-    rgba(67, 77, 64, 0.57);
-
-  font-size: 0.46rem;
-}
-
-/* Small image movement */
-
-@media (
-  hover: hover
-) and (
-  pointer: fine
-) {
+@media (hover: hover) and (pointer: fine) {
   .property-widget:hover
   .property-image {
     transform:
-      scale(1.055);
-  }
-}
-
-/* Tablet */
-
-@media (
-  max-width: 850px
-) {
-  .property-widget {
-    min-height: 570px;
-  }
-
-  .widget-content {
-    min-height: 570px;
-
-    padding:
-      42px
-      30px
-      25px;
-  }
-
-  .arrival-card {
-    left: auto;
-    right: 22px;
+      scale(1.045);
   }
 }
 
 /* Mobile */
 
-@media (
-  max-width: 650px
-) {
+@media (max-width: 650px) {
   body {
-    padding: 4px;
+    padding: 3px;
   }
 
   .property-widget {
-    min-height: 670px;
+    min-height: 410px;
 
-    border-radius: 23px;
+    border-radius: 20px;
   }
 
   .property-image {
@@ -567,10 +636,9 @@ h1 span {
       auto;
 
     width: 100%;
-    height: 48%;
+    height: 53%;
 
-    background-position:
-      center;
+    background-position: center;
   }
 
   .image-overlay {
@@ -578,83 +646,131 @@ h1 span {
       linear-gradient(
         0deg,
         var(--cream) 0%,
-        var(--cream) 50%,
-        rgba(243, 238, 229, 0.97) 58%,
-        rgba(243, 238, 229, 0.53) 74%,
-        rgba(36, 44, 34, 0.1) 100%
+        var(--cream) 47%,
+        rgba(243, 238, 229, 0.96) 56%,
+        rgba(243, 238, 229, 0.45) 74%,
+        rgba(36, 44, 34, 0.08) 100%
       );
   }
 
   .widget-content {
-    min-height: 670px;
+    min-height: 410px;
 
     padding:
-      25px
-      15px
-      15px;
+      17px
+      10px
+      10px;
   }
 
   .arrival-card {
-    top: 18px;
-    right: 16px;
+    top: 11px;
+    right: 10px;
 
     padding:
-      7px
-      11px;
+      6px
+      9px;
   }
 
   .property-heading {
-    padding-top: 275px;
+    padding-top: 185px;
   }
 
   .location {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 
-    font-size: 0.59rem;
+    font-size: 0.48rem;
   }
 
   h1 {
     font-size:
       clamp(
-        2.65rem,
-        12vw,
-        4rem
+        2rem,
+        10.5vw,
+        3rem
       );
 
-    line-height: 0.9;
+    line-height: 0.88;
   }
 
   .stay-dates {
-    margin-top: 15px;
+    margin-top: 7px;
 
-    font-size: 0.78rem;
+    font-size: 0.61rem;
+  }
+
+  .bottom-section {
+    grid-template-columns:
+      100px
+      minmax(0, 1fr);
+
+    gap: 6px;
+
+    margin-top: 11px;
+  }
+
+  .guest-summary {
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 3px;
+
+    padding:
+      7px
+      4px;
+  }
+
+  .guest-divider {
+    width: 38px;
+    height: 1px;
+  }
+
+  .guest-breakdown {
+    align-items: center;
+
+    gap: 0;
+
+    font-size: 0.39rem;
   }
 
   .weather-panel {
-    margin-top: 22px;
-
     padding:
-      13px
-      8px
-      8px;
+      7px
+      5px
+      6px;
+  }
+
+  .weather-header {
+    margin-bottom: 4px;
+  }
+
+  .weather-header h2 {
+    font-size: 0.72rem;
+  }
+
+  .weather-location {
+    display: none;
   }
 
   .forecast-day {
     padding:
-      9px
-      2px
-      8px;
+      4px
+      1px;
+  }
+
+  .day-name {
+    font-size: 0.42rem;
   }
 
   .weather-icon {
-    width: 29px;
-    height: 29px;
+    width: 21px;
+    height: 21px;
   }
 
   .temperatures {
-    gap: 3px;
+    gap: 2px;
 
-    font-size: 0.61rem;
+    font-size: 0.47rem;
   }
 
   .condition {
@@ -662,40 +778,36 @@ h1 span {
   }
 }
 
-/* Very small mobiles */
+/* Very narrow mobile screens */
 
-@media (
-  max-width: 380px
-) {
+@media (max-width: 365px) {
   .property-widget,
   .widget-content {
-    min-height: 690px;
+    min-height: 425px;
   }
 
   .property-heading {
-    padding-top: 260px;
+    padding-top: 180px;
   }
 
-  .weather-location {
-    max-width: 110px;
-
-    text-align: right;
+  .bottom-section {
+    grid-template-columns:
+      82px
+      minmax(0, 1fr);
   }
 
-  .weather-footer span:first-child {
+  .guest-item strong {
+    font-size: 1.2rem;
+  }
+
+  .weather-label {
     display: none;
-  }
-
-  .weather-footer {
-    justify-content: flex-end;
   }
 }
 
 /* Accessibility */
 
-@media (
-  prefers-reduced-motion: reduce
-) {
+@media (prefers-reduced-motion: reduce) {
   .property-image {
     transition: none;
     transform: none;
