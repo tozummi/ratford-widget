@@ -3,8 +3,7 @@ const STAY_DATES = [
   { date: "2026-08-18", day: "Tue" },
   { date: "2026-08-19", day: "Wed" },
   { date: "2026-08-20", day: "Thu" },
-  { date: "2026-08-21", day: "Fri" },
-  { date: "2026-08-22", day: "Sat" }
+  { date: "2026-08-21", day: "Fri" }
 ];
 
 /*
